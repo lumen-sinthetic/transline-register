@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "styled-components.vscode-styled-components",
+    "EditorConfig.editorconfig",
+    "mikestead.dotenv",
+    "biomejs.biome"
+  ],
+  "unwantedRecommendations": ["esbenp.prettier-vscode"]
+}
