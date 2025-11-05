@@ -48,7 +48,7 @@
       "suspicious": {
         "noDuplicateFontNames": "off",
         "noExplicitAny": "warn",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "warn"
       },
       "correctness": {
         "noUnusedVariables": "warn",
