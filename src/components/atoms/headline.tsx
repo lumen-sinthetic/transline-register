@@ -13,8 +13,7 @@ const headlineSizes = cva("", {
       sm: "text-base sm:text-lg 3xl:text-xl",
       "semi-sm": "text-lg lg:text-2xl 2xl:text-xl",
       md: "text-2xl sm:text-3xl 2xl:text-3xl",
-      lg: "text-2xl sm:text-3xl md:text-4xl",
-      xl: "text-3xl sm:text-4xl 2xl:text-5xl 3xl:text-6xl",
+      lg: "text-[24px] sm:text-[32px] lg:text-[50px]",
     },
   },
   defaultVariants: {

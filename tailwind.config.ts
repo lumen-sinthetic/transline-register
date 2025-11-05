@@ -32,7 +32,7 @@ export default {
 
       colors: {
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#05C0E6",
           foreground: "hsl(var(--primary-foreground))",
         },
         background: "hsl(var(--background))",

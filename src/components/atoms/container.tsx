@@ -8,7 +8,7 @@ interface ContainerProps extends ComponentProps<"div"> {
 export function Container({ disabled, className, ...props }: ContainerProps) {
   return (
     <div
-      className={cn({ "container mx-auto": !disabled }, className)}
+      className={cn({ "mx-auto px-16": !disabled }, className)}
       {...props}
     />
   );

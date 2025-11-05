@@ -1,26 +1,23 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "@shared/styles/globals.scss";
-import { ReactNode } from "react";
-import { routing } from "@core/locale/i18n/routing";
-import { getMessages } from "next-intl/server";
-import { hasLocale, Locale } from "next-intl";
-import { notFound } from "next/navigation";
-import IntlProvider from "@core/context/intl-provider";
-import { cn } from "@shared/lib/utils";
 import PageProgress from "@components/atoms/page-progress";
-import { headers } from "next/headers";
+import IntlProvider from "@core/context/intl-provider";
+import { routing } from "@core/locale/i18n/routing";
 import { selfURL } from "@shared/env";
 import { openGraphConstructor } from "@shared/lib/og-constructor";
+import { cn } from "@shared/lib/utils";
+import "@shared/styles/globals.scss";
+import type { Metadata } from "next";
+import { hasLocale, Locale } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { Geologica } from "next/font/google";
+import { headers } from "next/headers";
+import { notFound } from "next/navigation";
+import { ReactNode } from "react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const geologica = Geologica({
+  variable: "--font-geologica",
+  subsets: ["cyrillic", "latin"],
+  fallback: ["sans-serif"],
+  display: "swap",
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -61,14 +58,14 @@ async function RootLayout({ children, params }: Readonly<RootLayoutProps>) {
     <html lang={locale}>
       <body
         suppressHydrationWarning
-        className={cn(geistSans.variable, geistMono.variable, "antialiased")}
+        className={cn(geologica.className, geologica.variable, "antialiased")}
       >
         <IntlProvider
           locale={locale}
           messages={messages}
         >
           <PageProgress />
-          {children}
+          <main className="min-h-screen">{children}</main>
         </IntlProvider>
       </body>
     </html>
