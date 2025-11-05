@@ -1,7 +1,6 @@
 import { Container } from "@components/atoms/container";
 import { Headline } from "@components/atoms/headline";
 import Logo from "@components/atoms/icons/logo";
-import Truck from "@components/atoms/icons/truck";
 import { cn } from "@shared/lib/utils";
 
 function WelcomeBlock({ className }: { className?: string }) {
@@ -17,15 +16,12 @@ function WelcomeBlock({ className }: { className?: string }) {
         <Logo />
 
         <Headline
+          as="h1"
           size={"lg"}
-          className="font-semibold"
         >
           Добро пожаловать в личный кабинет для бизнеса!
         </Headline>
       </Container>
-
-      <Truck className="absolute left-16 bottom-24" />
-      <div className="w-full bg-white h-1 absolute bottom-16 inset-x-0" />
     </div>
   );
 }
