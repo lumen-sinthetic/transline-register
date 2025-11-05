@@ -3,13 +3,14 @@
 import OtpCheck from "@components/organisms/register/otp-check";
 import PhoneRegister from "@components/organisms/register/phone-register";
 import RolePick from "@components/organisms/register/role-pick";
+import { RegisterData } from "@entities/auth/models/auth.types";
 import Cookies from "js-cookie";
 import { createContext, useCallback, useContext, useState } from "react";
 
 interface ContextProps {
-  temporaryData: object;
-  goForward: (data: object) => void;
-  saveTemporaryData: (data: object) => void;
+  temporaryData: RegisterData;
+  goForward: (data?: RegisterData) => void;
+  saveTemporaryData: (data: RegisterData) => void;
 }
 
 const RegisterContext = createContext<ContextProps>({
@@ -31,8 +32,8 @@ function RegisterProgress({
 }: RegisterProgressProps) {
   const [currentStep, setCurrentStep] = useState(step);
 
-  const saveTemporaryData = useCallback((data: object) => {
-    const previousData: object = JSON.parse(
+  const saveTemporaryData = useCallback((data: RegisterData) => {
+    const previousData: RegisterData = JSON.parse(
       Cookies.get("x-register-data") || "{}"
     );
 
@@ -44,8 +45,8 @@ function RegisterProgress({
   }, []);
 
   const goForward = useCallback(
-    (data: object) => {
-      saveTemporaryData(data);
+    (data?: RegisterData) => {
+      if (data) saveTemporaryData(data);
 
       setCurrentStep(prev => {
         const res = prev + 1;

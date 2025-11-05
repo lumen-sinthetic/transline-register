@@ -2,13 +2,14 @@ import { Button } from "@components/atoms/button";
 import { Container } from "@components/atoms/container";
 import RegisterText from "@components/molecules/register/register-text";
 import { useRegisterContext } from "@components/templates/register-progress";
+import { UserRole } from "@entities/auth/models/auth.types";
 import { cn } from "@shared/lib/utils";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 
 function RolePick({ className }: { className?: string }) {
   const { goForward } = useRegisterContext();
-  const [role, setRole] = useState<"customer" | "carrier">();
+  const [role, setRole] = useState<UserRole>();
 
   const submitHandler = useCallback(() => {
     if (!role) {

@@ -16,3 +16,17 @@ export function usePhoneSchema() {
 
   return schema;
 }
+
+export function useOtpSchema() {
+  const schema = useMemo(
+    () =>
+      z.object({
+        otp: z
+          .string({ message: "Некорректный код" })
+          .length(6, "Необходимая длина - 6 символов"),
+      }),
+    []
+  );
+
+  return schema;
+}

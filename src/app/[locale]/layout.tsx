@@ -37,11 +37,11 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-// export const revalidate = 120;
+export const revalidate = 120;
 
-// export function generateStaticParams() {
-//   return routing.locales.map((locale) => ({ locale }));
-// }
+export function generateStaticParams() {
+  return routing.locales.map(locale => ({ locale }));
+}
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -66,7 +66,7 @@ async function RootLayout({ children, params }: Readonly<RootLayoutProps>) {
           messages={messages}
         >
           <PageProgress />
-          <Toaster />
+          <Toaster richColors />
           <main className="min-h-screen">{children}</main>
         </IntlProvider>
       </body>

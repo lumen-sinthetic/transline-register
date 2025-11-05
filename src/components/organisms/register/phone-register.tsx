@@ -6,25 +6,26 @@ import { Container } from "@components/atoms/container";
 import RegisterText from "@components/molecules/register/register-text";
 import SimplePhoneInput from "@components/molecules/simple-phone-input";
 import { useRegisterContext } from "@components/templates/register-progress";
+import { usePhoneSchema } from "@entities/auth/models/register-schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { promiseGenerator } from "@shared/lib/promise-generator";
 import { cn } from "@shared/lib/utils";
-import { usePhoneSchema } from "@shared/schemas/register-schemas";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import z from "zod";
 
 function PhoneRegister({ classname }: { classname?: string }) {
   const [isAccepted, setIsAccepted] = useState(false);
-  const schema = usePhoneSchema();
   const { goForward, temporaryData } = useRegisterContext();
+  const schema = usePhoneSchema();
 
   const {
     control,
     handleSubmit,
     formState: { isSubmitting, isValid },
-  } = useForm<{ phone_number: string }>({
+  } = useForm<z.infer<typeof schema>>({
     mode: "onChange",
     shouldFocusError: true,
     defaultValues: temporaryData,
