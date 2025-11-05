@@ -13,6 +13,7 @@ import {
   ComponentProps,
   ForwardedRef,
   forwardRef,
+  memo,
   ReactElement,
   RefAttributes,
   useMemo,
@@ -50,10 +51,7 @@ function renderer<T extends FieldValues>(
   } = useController({ control, name });
 
   const [selectedCountry, setSelectedCountry] = useState("+7");
-
   const maskitoRef = useMaskito({ options: emptyMask });
-
-  console.log(value);
 
   const inputValue = useMemo(() => {
     const cleared = value.replace(selectedCountry, "");
@@ -86,9 +84,6 @@ function renderer<T extends FieldValues>(
         value={inputValue}
         onChange={e => {
           const res = unmask(selectedCountry + e.target.value);
-
-          console.log(res);
-
           onChange(res);
         }}
         {...field}
@@ -98,6 +93,6 @@ function renderer<T extends FieldValues>(
   );
 }
 
-export default forwardRef(renderer) as <T extends FieldValues>(
+export default memo(forwardRef(renderer)) as <T extends FieldValues>(
   props: InputProps<T> & RefAttributes<HTMLInputElement>
 ) => ReactElement;

@@ -11,22 +11,31 @@ import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { usePhoneSchema } from "@shared/schemas/register-schemas";
+import { useRegisterContext } from "@components/templates/RegisterProgress";
 
 function PhoneRegister({ classname }: { classname?: string }) {
   const [isAccepted, setIsAccepted] = useState(false);
+  const schema = usePhoneSchema();
+  const { goForward, temporaryData } = useRegisterContext();
 
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isValid },
   } = useForm<{ phone_number: string }>({
+    mode: "onChange",
     shouldFocusError: true,
+    defaultValues: temporaryData,
+    resolver: zodResolver(schema),
   });
+
+  console.log(temporaryData);
 
   const onSubmit = handleSubmit(async data => {
     const res = await promiseGenerator(data);
-
-    console.log(res);
+    goForward(res);
   });
 
   return (
@@ -69,7 +78,7 @@ function PhoneRegister({ classname }: { classname?: string }) {
             className="w-full uppercase"
             size={"lg"}
             type="submit"
-            disabled={isSubmitting || !isAccepted}
+            disabled={isSubmitting || !isAccepted || !isValid}
           >
             <span className={cn({ invisible: isSubmitting })}>Войти</span>
             {isSubmitting && <Loader2 className="animate-spin" />}

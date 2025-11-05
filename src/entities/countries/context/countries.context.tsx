@@ -15,6 +15,7 @@ interface CountriesProviderProps {
 }
 
 function CountriesProvider({ children, countries }: CountriesProviderProps) {
+  // Sliced data from third-party countries api for demonstration
   return (
     <CountriesContext.Provider value={countries.slice(0, 50)}>
       {children}
