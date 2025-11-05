@@ -3,17 +3,17 @@
 import { Button } from "@components/atoms/button";
 import { Checkbox } from "@components/atoms/checkbox";
 import { Container } from "@components/atoms/container";
-import { Headline } from "@components/atoms/headline";
+import RegisterText from "@components/molecules/register/register-text";
 import SimplePhoneInput from "@components/molecules/simple-phone-input";
+import { useRegisterContext } from "@components/templates/RegisterProgress";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { promiseGenerator } from "@shared/lib/promise-generator";
 import { cn } from "@shared/lib/utils";
+import { usePhoneSchema } from "@shared/schemas/register-schemas";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { usePhoneSchema } from "@shared/schemas/register-schemas";
-import { useRegisterContext } from "@components/templates/RegisterProgress";
 
 function PhoneRegister({ classname }: { classname?: string }) {
   const [isAccepted, setIsAccepted] = useState(false);
@@ -31,23 +31,18 @@ function PhoneRegister({ classname }: { classname?: string }) {
     resolver: zodResolver(schema),
   });
 
-  console.log(temporaryData);
-
   const onSubmit = handleSubmit(async data => {
     const res = await promiseGenerator(data);
     goForward(res);
   });
 
   return (
-    <div className={cn("register relative text-black", classname)}>
+    <div className={cn("register-phone", classname)}>
       <Container className="py-24">
-        <div className="header space-y-2">
-          <Headline>Регистрация</Headline>
-          <p className="font-light">
-            Для входа в личный кабинет введите свой номер телефона, на него
-            будет отправлено SMS с проверочным кодом
-          </p>
-        </div>
+        <RegisterText
+          title="Регистрация"
+          description="Для входа в личный кабинет введите свой номер телефона, на него будет отправлено SMS с проверочным кодом"
+        />
 
         <form
           onSubmit={onSubmit}

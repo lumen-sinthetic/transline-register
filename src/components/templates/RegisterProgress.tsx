@@ -1,7 +1,7 @@
 "use client";
 
-import PhoneRegister from "@components/organisms/phone-register";
-import { cn } from "@shared/lib/utils";
+import PhoneRegister from "@components/organisms/register/phone-register";
+import RolePick from "@components/organisms/register/role-pick";
 import Cookies from "js-cookie";
 import { createContext, useCallback, useContext, useState } from "react";
 
@@ -38,9 +38,7 @@ function RegisterProgress({
     Cookies.set(
       "x-register-data",
       JSON.stringify({ ...previousData, ...data }),
-      {
-        expires: 60 * 60 * 24,
-      }
+      { expires: 60 * 60 * 24 }
     );
   }, []);
 
@@ -59,6 +57,7 @@ function RegisterProgress({
     [setCurrentStep, saveTemporaryData]
   );
 
+  // TODO: add flowing animation
   return (
     <RegisterContext.Provider
       value={{
@@ -68,7 +67,8 @@ function RegisterProgress({
       }}
     >
       <div className="basis-1/2">
-        <PhoneRegister classname={cn({ hidden: currentStep !== 1 })} />
+        {currentStep === 1 && <PhoneRegister />}
+        {currentStep === 2 && <RolePick />}
       </div>
     </RegisterContext.Provider>
   );
