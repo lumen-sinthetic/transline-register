@@ -1,5 +1,6 @@
 "use client";
 
+import OtpCheck from "@components/organisms/register/otp-check";
 import PhoneRegister from "@components/organisms/register/phone-register";
 import RolePick from "@components/organisms/register/role-pick";
 import Cookies from "js-cookie";
@@ -69,6 +70,7 @@ function RegisterProgress({
       <div className="basis-1/2">
         {currentStep === 1 && <PhoneRegister />}
         {currentStep === 2 && <RolePick />}
+        {currentStep === 3 && <OtpCheck />}
       </div>
     </RegisterContext.Provider>
   );

@@ -12,6 +12,7 @@ import { Geologica } from "next/font/google";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
+import { Toaster } from "sonner";
 
 const geologica = Geologica({
   variable: "--font-geologica",
@@ -65,6 +66,7 @@ async function RootLayout({ children, params }: Readonly<RootLayoutProps>) {
           messages={messages}
         >
           <PageProgress />
+          <Toaster />
           <main className="min-h-screen">{children}</main>
         </IntlProvider>
       </body>
