@@ -1,6 +1,6 @@
 import RegisterDownLine from "@components/molecules/register-down-line";
 import WelcomeBlock from "@components/organisms/register/welcome-block";
-import RegisterProgress from "@components/templates/RegisterProgress";
+import RegisterProgress from "@components/templates/register-progress";
 import { getCountries } from "@entities/countries/api/countries.actions";
 import CountriesProvider from "@entities/countries/context/countries.context";
 import { cookies } from "next/headers";

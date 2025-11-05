@@ -5,7 +5,7 @@ import { Checkbox } from "@components/atoms/checkbox";
 import { Container } from "@components/atoms/container";
 import RegisterText from "@components/molecules/register/register-text";
 import SimplePhoneInput from "@components/molecules/simple-phone-input";
-import { useRegisterContext } from "@components/templates/RegisterProgress";
+import { useRegisterContext } from "@components/templates/register-progress";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { promiseGenerator } from "@shared/lib/promise-generator";
 import { cn } from "@shared/lib/utils";
