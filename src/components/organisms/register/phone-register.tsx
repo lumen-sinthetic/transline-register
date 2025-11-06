@@ -6,6 +6,7 @@ import { Container } from "@components/atoms/container";
 import RegisterText from "@components/molecules/register/register-text";
 import SimplePhoneInput from "@components/molecules/simple-phone-input";
 import { useRegisterContext } from "@components/templates/register-progress";
+import { useSaveOnUnload } from "@entities/auth/helpers/save-data";
 import { usePhoneSchema } from "@entities/auth/models/register-schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { promiseGenerator } from "@shared/lib/promise-generator";
@@ -24,6 +25,7 @@ function PhoneRegister({ classname }: { classname?: string }) {
   const {
     control,
     handleSubmit,
+    watch,
     formState: { isSubmitting, isValid },
   } = useForm<z.infer<typeof schema>>({
     mode: "onChange",
@@ -36,6 +38,8 @@ function PhoneRegister({ classname }: { classname?: string }) {
     const res = await promiseGenerator(data);
     goForward(res);
   });
+
+  useSaveOnUnload(watch());
 
   return (
     <div className={cn("register-phone", classname)}>

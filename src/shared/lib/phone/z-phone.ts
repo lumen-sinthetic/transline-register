@@ -1,5 +1,6 @@
-import { getCountryCallingCode } from "libphonenumber-js";
 import { z } from "zod";
+
+import { getCountryCallingCode } from "libphonenumber-js";
 import { defineCountry, unmask } from "./tools";
 
 export interface ZPhoneNumberOptions {
@@ -7,75 +8,52 @@ export interface ZPhoneNumberOptions {
 
   requiredMessage?: string;
 
-  required?: boolean;
-
-  /**
-   * @param shouldRefine - should refine the schema
-   * @default true
-   */
-  shouldRefine?: boolean;
   /**
    * @param exceptions - array of regex or strings for exceptions in schema refinement
    */
   exceptions?: Array<RegExp | string>;
 }
 
-type PhoneNumberString =
-  | z.ZodString
-  | z.ZodEffects<z.ZodString, string, string>;
-
 interface ZPhoneNumber {
   /**
    * @description zod schema for phone number validation
    * @returns zod schema
    */
-  (): PhoneNumberString;
+  (): z.ZodString;
 
   /**
    * @description zod schema for phone number validation
    * @param message - accepts string for error message
    * @returns zod schema
    */
-  (message: string): PhoneNumberString;
+  (message: string): z.ZodString;
 
   /**
    * @description zod schema for phone number validation
    * @param options - accepts ZPhoneNumberOptions object
    * @returns zod schema
    */
-  (options: ZPhoneNumberOptions): PhoneNumberString;
+  (options: ZPhoneNumberOptions): z.ZodString;
 }
 
 export const zPhoneNumber: ZPhoneNumber = (
-  options?: ZPhoneNumberOptions | string
+  options: ZPhoneNumberOptions | string = {}
 ) => {
   const {
-    required = true,
     exceptions = [],
     invalidMessage = "Invalid phone number",
     requiredMessage = "Phone number required",
   }: ZPhoneNumberOptions = typeof options === "string"
     ? { requiredMessage: options, invalidMessage: options }
-    : options || {};
+    : options;
 
-  const baseSchema = z.string({ required_error: requiredMessage });
+  return z.string({ error: requiredMessage }).superRefine((value, ctx) => {
+    if (typeof value !== "string") return;
 
-  const schema = baseSchema.superRefine((value, ctx) => {
-    if (!required && !value) return true;
-
-    if (!value) {
-      return ctx.addIssue({ code: "custom", message: invalidMessage });
+    for (let i = 0; i < exceptions.length; i++) {
+      const regex = new RegExp(exceptions[i]);
+      if (regex.test(value)) return;
     }
-
-    let isExcept = false;
-
-    exceptions.forEach(exp => {
-      const regex = new RegExp(exp);
-      const result = regex.test(value);
-      if (!isExcept) isExcept = result;
-    });
-
-    if (isExcept) return true;
 
     if (!/^\+?\d{11,15}$/.test(value)) {
       return ctx.addIssue({ code: "custom", message: invalidMessage });
@@ -89,8 +67,8 @@ export const zPhoneNumber: ZPhoneNumber = (
 
     const callingCode = getCountryCallingCode(country);
 
-    return !/^(\d)\1+$/.test(value.replace(callingCode, "").replace(/^\+/, ""));
+    if (!/^(\d)\1+$/.test(value.replace(callingCode, "").replace(/^\+/, ""))) {
+      return ctx.addIssue({ code: "custom", message: invalidMessage });
+    }
   });
-
-  return schema;
 };
