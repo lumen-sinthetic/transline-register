@@ -1,12 +1,22 @@
+"use client";
+
 import { useNaigationLinks } from "@shared/constants/naviagtion";
+import { useDashboardContext } from "@shared/context/dashboard.context";
 import { cn } from "@shared/lib/utils";
 import { ChevronUp } from "lucide-react";
 
 function ProfileSidebar() {
   const { dashboardLinks } = useNaigationLinks();
 
+  const { activeMenu } = useDashboardContext();
+
   return (
-    <aside className="bg-mostly-white border-r w-64 fixed left-0 top-14 bottom-0 pb-10">
+    <aside
+      className={cn(
+        "bg-mostly-white border-r w-64 fixed left-0 top-14 bottom-0 pb-10",
+        { hidden: !activeMenu }
+      )}
+    >
       <nav className="flex flex-col gap-4 h-full">
         {dashboardLinks.map(section => (
           <div

@@ -75,13 +75,13 @@ function PhoneRegister({ classname }: { classname?: string }) {
           </label>
 
           <Button
-            className="w-full uppercase"
+            className="w-full uppercase relative"
             size={"lg"}
             type="submit"
             disabled={isSubmitting || !isAccepted || !isValid}
           >
             <span className={cn({ invisible: isSubmitting })}>Войти</span>
-            {isSubmitting && <Loader2 className="animate-spin" />}
+            {isSubmitting && <Loader2 className="animate-spin absolute" />}
           </Button>
         </form>
       </Container>

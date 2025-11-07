@@ -69,7 +69,7 @@ function UserForm() {
             autoComplete="current-password"
           />
 
-          {temporaryData.role === "carrier" ? (
+          {temporaryData.role === "customer" ? (
             <Input
               {...register("bin")}
               error={errors.bin?.message}
@@ -84,13 +84,13 @@ function UserForm() {
           )}
 
           <Button
-            className="w-full uppercase"
+            className="w-full uppercase relative"
             size={"lg"}
             type="submit"
             disabled={isSubmitting}
           >
             <span className={cn({ invisible: isSubmitting })}>Войти</span>
-            {isSubmitting && <Loader2 className="animate-spin" />}
+            {isSubmitting && <Loader2 className="animate-spin absolute" />}
           </Button>
         </form>
       </Container>

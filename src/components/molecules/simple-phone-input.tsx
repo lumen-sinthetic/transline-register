@@ -7,7 +7,7 @@ import { refs } from "@shared/lib/refs";
 
 import { maskitoTransform } from "@maskito/core";
 import { useMaskito } from "@maskito/react";
-import { emptyMask } from "@shared/lib/phone/empty-mask";
+import { emptyMask } from "@shared/lib/phone/masks";
 import { cn } from "@shared/lib/utils";
 import {
   ComponentProps,

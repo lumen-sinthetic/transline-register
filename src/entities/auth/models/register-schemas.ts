@@ -60,7 +60,7 @@ export function useUserSchema(role?: UserRole) {
         .optional(),
     });
 
-    if (role === "carrier") return base.required({ bin: true });
+    if (role === "customer") return base.required({ bin: true });
 
     return base.required({ iin: true });
   }, [role]);
