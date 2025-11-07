@@ -63,7 +63,7 @@ function CarrierCard({ className, onClick }: CardProps) {
         >
           как перевозчик
         </Headline>
-        <p className="text-sm text-gray-400">
+        <p className="text-sm text-charcoal-400">
           Получайте актуальную информацию о своих перевозках{" "}
         </p>
       </div>

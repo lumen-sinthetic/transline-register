@@ -30,7 +30,7 @@ function CustomerCard({ className, onClick }: CardProps) {
         >
           как заказчик
         </Headline>
-        <p className="text-sm text-gray-400">
+        <p className="text-sm text-charcoal-400">
           Контролируйте выполнение заявок в реальном времени
         </p>
       </div>

@@ -36,6 +36,8 @@ export default {
           faint: "#EDFBFD",
           foreground: "hsl(var(--primary-foreground))",
         },
+        "mostly-white": "#F4F8F9",
+        "charcoal-400": "#808080",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
