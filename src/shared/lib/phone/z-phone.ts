@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-import { getCountryCallingCode } from "libphonenumber-js";
 import { defineCountry, unmask } from "./tools";
 
 export interface ZPhoneNumberOptions {
@@ -65,10 +64,10 @@ export const zPhoneNumber: ZPhoneNumber = (
       return ctx.addIssue({ code: "custom", message: invalidMessage });
     }
 
-    const callingCode = getCountryCallingCode(country);
+    // const callingCode = getCountryCallingCode(country);
 
-    if (!/^(\d)\1+$/.test(value.replace(callingCode, "").replace(/^\+/, ""))) {
-      return ctx.addIssue({ code: "custom", message: invalidMessage });
-    }
+    // if (!/^(\d)\1+$/.test(value.replace(callingCode, "").replace(/^\+/, ""))) {
+    //   return ctx.addIssue({ code: "custom", message: invalidMessage });
+    // }
   });
 };
