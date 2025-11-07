@@ -9,9 +9,7 @@ const headlineSizes = cva("", {
   variants: {
     size: {
       none: "",
-      // xs: "text-2xs lg:text-xs",
-      // sm: "text-base sm:text-lg 3xl:text-xl",
-      // "semi-sm": "text-lg lg:text-2xl 2xl:text-xl",
+      sm: "text-[24px]",
       md: "text-[24px] sm:text-[32px] font-semibold",
       lg: "text-[24px] sm:text-[32px] lg:text-[50px] font-semibold",
     },

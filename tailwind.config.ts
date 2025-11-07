@@ -33,6 +33,7 @@ export default {
       colors: {
         primary: {
           DEFAULT: "#05C0E6",
+          faint: "#EDFBFD",
           foreground: "hsl(var(--primary-foreground))",
         },
         background: "hsl(var(--background))",
