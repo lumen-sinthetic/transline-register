@@ -14,6 +14,7 @@ function RolePick({ className }: { className?: string }) {
   const { goForward } = useRegisterContext();
   const [role, setRole] = useState<UserRole>();
   const t = useTranslations();
+  // const animationref = useStepAnimation<HTMLDivElement>(2, activeStep);
 
   const submitHandler = useCallback(() => {
     if (!role) {

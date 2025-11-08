@@ -5,8 +5,7 @@ import Menu from "@components/atoms/icons/menu";
 import LangSwitcher from "@components/molecules/lang-switcher";
 import { useDashboardContext } from "@shared/context/dashboard.context";
 import { cn } from "@shared/lib/utils";
-import { ChevronDown } from "lucide-react";
-import Image from "next/image";
+import { ChevronDown, User } from "lucide-react";
 
 function ProfileHeader() {
   const { setActiveMenu, setActiveUserMenu, activeUserMenu } =
@@ -37,13 +36,9 @@ function ProfileHeader() {
           className="flex items-center gap-2"
           onClick={() => setActiveUserMenu(prev => !prev)}
         >
-          <Image
-            src={"/assets/img/placeholder.svg"}
-            alt="placeholder"
-            width={32}
-            height={32}
-            className="rounded-full"
-          />
+          <div className="bg-white rounded-full size-8 grid place-items-center text-charcoal-400">
+            <User className="size-5" />
+          </div>
 
           <ChevronDown
             className={cn("stroke-gray-500 w-4 transition-transform", {

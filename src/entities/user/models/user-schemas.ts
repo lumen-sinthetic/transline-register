@@ -1,27 +1,30 @@
 import { zPhoneNumber } from "@shared/lib/phone/z-phone";
+import { useTranslations } from "next-intl";
 import { useMemo } from "react";
 import z from "zod";
 
 export function useUserEditSchema() {
+  const t = useTranslations("common.validation");
+
   const schema = useMemo(
     () =>
       z.object({
         phone_number: zPhoneNumber({
-          requiredMessage: "Номер телефона обязателен",
-          invalidMessage: "Некорректный номер телефона",
+          requiredMessage: t("phone_number.required"),
+          invalidMessage: t("phone_number.invalid"),
         }),
         first_name: z
-          .string({ error: "Имя обязательно" })
-          .nonempty("Имя обязательно"),
+          .string({ error: t("first_name.required") })
+          .nonempty(t("first_name.required")),
         last_name: z
-          .string({ error: "Фамилия обязательна" })
-          .nonempty("Фамилия обязательна"),
-        patronymic: z.string({ error: "Неверное отчество" }).optional(),
+          .string({ error: t("last_name.required") })
+          .nonempty(t("last_name.required")),
+        patronymic: z.string({ error: t("patronymic.invalid") }).optional(),
         email: z
-          .email({ error: "Неверный Email" })
-          .nonempty("Email обязателен"),
+          .email({ error: t("email.invalid") })
+          .nonempty(t("email.required")),
       }),
-    []
+    [t]
   );
 
   return schema;

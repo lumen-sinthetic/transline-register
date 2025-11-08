@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 export function useSlideInAnimation<T extends HTMLElement = HTMLElement>(
   visible: boolean,
@@ -7,8 +7,9 @@ export function useSlideInAnimation<T extends HTMLElement = HTMLElement>(
 ) {
   const elementRef = useRef<T>(null);
   const tlRef = useRef<GSAPTimeline>(null);
+  const isFirstRender = useRef(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!tlRef.current && elementRef.current) {
       const tl = gsap
         .timeline({ paused: true })
@@ -19,17 +20,25 @@ export function useSlideInAnimation<T extends HTMLElement = HTMLElement>(
         );
 
       tlRef.current = tl;
+
+      if (visible && isFirstRender.current) {
+        gsap.set(elementRef.current, { x: 0 });
+        tl.progress(1); // Set timeline to end state
+      }
     }
 
     return () => {
       tlRef.current?.kill();
     };
-  }, []);
+  }, [direction]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!tlRef.current) return;
 
-    // TODO: Fix animation first play
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
 
     if (visible) {
       tlRef.current.play();

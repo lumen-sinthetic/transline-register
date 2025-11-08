@@ -25,7 +25,9 @@ function UserField<T extends FieldValues>({
   return (
     <label className="grid grid-cols-[160px_1fr] items-center px-6 py-3">
       <div
-        className={cn("text-sm text-charcoal-400", { "text-red-500": error })}
+        className={cn("text-sm text-charcoal-400 cursor-pointer", {
+          "text-red-500": error,
+        })}
       >
         {label}
       </div>

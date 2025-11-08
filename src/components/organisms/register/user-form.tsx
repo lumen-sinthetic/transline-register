@@ -16,6 +16,7 @@ import z from "zod";
 function UserForm() {
   const { temporaryData, finish } = useRegisterContext();
   const schema = useUserSchema(temporaryData.role);
+  // const animationref = useStepAnimation<HTMLDivElement>(4, activeStep);
 
   const t = useTranslations("common.forms");
 

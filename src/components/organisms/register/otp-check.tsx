@@ -22,6 +22,7 @@ function OtpCheck() {
   const { temporaryData, goForward } = useRegisterContext();
   const schema = useOtpSchema();
   const t = useTranslations("register.otp");
+  // const animationref = useStepAnimation<HTMLDivElement>(3, activeStep);
 
   const {
     control,

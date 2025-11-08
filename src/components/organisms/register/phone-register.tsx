@@ -22,6 +22,7 @@ function PhoneRegister({ classname }: { classname?: string }) {
   const [isAccepted, setIsAccepted] = useState(false);
   const { goForward, temporaryData } = useRegisterContext();
   const schema = usePhoneSchema();
+  // const animationref = useStepAnimation<HTMLDivElement>(1, activeStep);
 
   const t = useTranslations();
 
