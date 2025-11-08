@@ -21,7 +21,12 @@ function ProfileHeader() {
         >
           <Menu />
         </button>
-        <Headline className="uppercase">transline</Headline>
+        <Headline
+          size={"sm"}
+          className="uppercase font-sf-pro font-semibold tracking-[1%]"
+        >
+          transline
+        </Headline>
       </div>
 
       <button

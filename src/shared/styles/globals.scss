@@ -1,4 +1,5 @@
 @use "vars" as *;
+@use "fonts" as *;
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +50,7 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --sf-pro: "SF Pro Display";
   }
   .dark {
     --background: 0 0% 3.9%;

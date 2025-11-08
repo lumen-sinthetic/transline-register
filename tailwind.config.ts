@@ -30,6 +30,10 @@ export default {
         "2xs": "10px",
       },
 
+      fontFamily: {
+        "sf-pro": "var(--sf-pro), sans-serif",
+      },
+
       colors: {
         primary: {
           DEFAULT: "#05C0E6",
