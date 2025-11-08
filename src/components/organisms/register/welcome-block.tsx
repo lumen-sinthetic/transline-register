@@ -13,7 +13,7 @@ function WelcomeBlock({ className }: { className?: string }) {
     <div
       className={cn(
         "welcome",
-        "relative h-full bg-primary text-white",
+        "relative h-full bg-primary text-mostly-white",
         className
       )}
     >

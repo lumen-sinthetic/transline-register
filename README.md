@@ -22,7 +22,7 @@ pnpm dev
 - localization on `ru` and `en` languages
 - toast notifications
 - auto focus on error
-<!-- - dark and light mode -->
+- dark and light mode
 
 ### You can view deployed version [here](https://transline-register.vercel.app)
 

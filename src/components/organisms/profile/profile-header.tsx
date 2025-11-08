@@ -3,6 +3,7 @@
 import { Headline } from "@components/atoms/headline";
 import Menu from "@components/atoms/icons/menu";
 import LangSwitcher from "@components/molecules/lang-switcher";
+import ThemeSwitcher from "@components/molecules/theme-switcher";
 import { useDashboardContext } from "@shared/context/dashboard.context";
 import { cn } from "@shared/lib/utils";
 import { ChevronDown, User } from "lucide-react";
@@ -12,14 +13,14 @@ function ProfileHeader() {
     useDashboardContext();
 
   return (
-    <header className="fixed inset-x-0 top-0 h-14 py-2 pl-4 pr-5 bg-mostly-white border-b flex items-center justify-between">
+    <header className="fixed inset-x-0 top-0 h-14 py-2 pl-4 pr-5 bg-mostly-white dark:bg-charcoal dark:border-charcoal-400 border-b flex items-center justify-between">
       <div className="flex items-center">
         <button
           type="button"
           onClick={() => setActiveMenu(prev => !prev)}
           className="p-4"
         >
-          <Menu />
+          <Menu className="dark:stroke-mostly-white" />
         </button>
         <Headline
           size={"sm"}
@@ -30,6 +31,7 @@ function ProfileHeader() {
       </div>
 
       <div className="flex gap-2">
+        <ThemeSwitcher />
         <LangSwitcher className="gap-1" />
         <button
           type="button"

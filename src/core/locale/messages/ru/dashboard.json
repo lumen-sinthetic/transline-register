@@ -1,5 +1,7 @@
 {
   "dashboard": {
+    "logout": "Выход",
+    "logout-success": "Вы успешно вышли из аккаунта",
     "menu": {
       "sections": {
         "applications": {

@@ -51,7 +51,7 @@ function CustomerCard({ className, onClick }: CardProps) {
         <div
           className={cn(
             "bg-primary-faint size-9 grid place-items-center rounded-full",
-            "absolute bottom-0 left-[calc(50%+2px)] -translate-x-1/2"
+            "absolute bottom-4 left-[calc(50%+5px)] -translate-x-1/2"
           )}
         >
           <Download className="h-5 w-fit text-primary" />

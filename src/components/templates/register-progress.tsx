@@ -91,7 +91,7 @@ function RegisterProgress({
         temporaryData,
       }}
     >
-      <div className="basis-1/2">
+      <div className="basis-1/2 dark:bg-charcoal">
         {currentStep === 1 && <PhoneRegister />}
         {currentStep === 2 && <RolePick />}
         {currentStep === 3 && <OtpCheck />}

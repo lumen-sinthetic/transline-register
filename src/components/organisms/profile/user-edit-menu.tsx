@@ -18,6 +18,7 @@ import z from "zod";
 function UserEditMenu() {
   const schema = useUserEditSchema();
   const t = useTranslations("common.forms");
+  const tDashboard = useTranslations("dashboard");
   const { logout, activeUserMenu } = useDashboardContext();
   const storage = useLocalStorage();
   const animationRef = useSlideInAnimation<HTMLFormElement>(
@@ -47,29 +48,29 @@ function UserEditMenu() {
       onSubmit={onSubmit}
       ref={animationRef}
       className={cn(
-        "fixed top-14 bottom-0 right-0 w-full sm:w-[520px] border-l bg-white"
+        "fixed top-14 bottom-0 right-0 w-full sm:w-[520px] border-l bg-mostly-white dark:bg-charcoal"
       )}
     >
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between px-5 py-4">
         <Button
           variant={"primary-outline"}
           type="submit"
-          className="relative"
+          className="relative lowercase"
         >
           <span className={cn({ invisible: isSubmitting })}>{t("save")}</span>
           {isSubmitting && <Loader2 className="animate-spin absolute" />}
         </Button>
 
-        <button
-          type="button"
-          className="p-2 text-charcoal-400"
+        <Button
+          variant={"ghost"}
+          className="text-charcoal-400 lowercase px-0"
           onClick={logout}
         >
-          <ChevronRight className="size-4" />
-        </button>
+          {tDashboard("logout")} <ChevronRight className="size-4" />
+        </Button>
       </div>
 
-      <div className="border-t border-dashed" />
+      <div className="border-t border-dashed dark:border-charcoal-400" />
 
       <div className="pb-10">
         <UserField

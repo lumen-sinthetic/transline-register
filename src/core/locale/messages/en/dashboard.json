@@ -1,5 +1,7 @@
 {
   "dashboard": {
+    "logout": "Logout",
+    "logout-success": "You successfully been logged out",
     "menu": {
       "sections": {
         "applications": {

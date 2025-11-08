@@ -1,5 +1,5 @@
 function ProfilePage() {
-  return <div className=""></div>;
+  return <div className="dark:bg-charcoal min-h-screen"></div>;
 }
 
 export default ProfilePage;

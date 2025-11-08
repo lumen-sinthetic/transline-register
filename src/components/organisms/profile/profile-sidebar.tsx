@@ -15,7 +15,7 @@ function ProfileSidebar() {
     <aside
       ref={animRef}
       className={cn(
-        "bg-mostly-white border-r w-full xs:w-64 fixed left-0 top-14 bottom-0 pb-10"
+        "bg-mostly-white dark:bg-charcoal border-r w-full xs:w-64 fixed left-0 top-14 bottom-0 pb-10"
       )}
     >
       <nav className="flex flex-col gap-4 h-full">
@@ -26,7 +26,7 @@ function ProfileSidebar() {
           >
             <div
               className={cn(
-                "px-6 text-[11px] font-semibold pb-2 pt-3 uppercase tracking-[0.12em] text-charcoal",
+                "px-6 text-[11px] font-semibold pb-2 pt-3 uppercase tracking-[0.12em]",
                 "border-b border-dashed"
               )}
             >
@@ -43,8 +43,10 @@ function ProfileSidebar() {
                       type="button"
                       className={cn(
                         "flex w-full items-center gap-3 px-6 py-2 text-left text-sm transition-colors text-charcoal-400",
-                        "hover:text-charcoal",
-                        { "text-charcoal": item.isActive }
+                        "hover:text-charcoal dark:hover:text-mostly-white",
+                        {
+                          "text-charcoal dark:text-mostly-white": item.isActive,
+                        }
                       )}
                     >
                       <Icon className="h-4 w-4" />

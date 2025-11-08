@@ -62,7 +62,7 @@ async function RootLayout({ children, params }: Readonly<RootLayoutProps>) {
         className={cn(
           geologica.className,
           geologica.variable,
-          "text-charcoal antialiased"
+          "text-charcoal dark:text-white antialiased"
         )}
       >
         <IntlProvider

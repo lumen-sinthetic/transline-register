@@ -4,6 +4,8 @@ import animate from "tailwindcss-animate";
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
 
+  darkMode: "class",
+
   theme: {
     container: {
       center: true,
