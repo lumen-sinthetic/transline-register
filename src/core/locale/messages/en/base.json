@@ -1,3 +1,58 @@
 {
-  "message": "An empty message"
+  "common": {
+    "forms": {
+      "log-in": "Log in",
+      "save": "Save",
+      "saved": "Saved",
+      "continue": "Continue",
+      "labels": {
+        "last_name": "Last name",
+        "first_name": "First name",
+        "patronymic": "Patronymic",
+        "phone_number": "Phone number",
+        "email": "Email",
+        "password": "Password",
+        "bin": "BIN",
+        "iin": "IIN"
+      },
+      "send-again": "Send again",
+      "after": "after"
+    },
+    "validation": {
+      "phone_number": {
+        "required": "Phone number is required",
+        "invalid": "Invalid phone number"
+      },
+      "otp": {
+        "invalid": "Invalid code",
+        "length": "Required length is 6 characters"
+      },
+      "first_name": {
+        "required": "First name is required"
+      },
+      "last_name": {
+        "required": "Last name is required"
+      },
+      "patronymic": {
+        "invalid": "Invalid patronymic"
+      },
+      "email": {
+        "invalid": "Invalid Email",
+        "required": "Email is required"
+      },
+      "password": {
+        "required": "Password is required",
+        "min": "Password must contain at least 8 characters",
+        "regex": "Password must contain digits and Latin letters"
+      },
+      "iin": {
+        "required": "IIN is required",
+        "length": "IIN must contain 12 characters"
+      },
+      "bin": {
+        "required": "BIN is required",
+        "length": "BIN must contain 12 characters"
+      }
+    }
+  }
 }

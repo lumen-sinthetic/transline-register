@@ -6,8 +6,10 @@ import RolePick from "@components/organisms/register/role-pick";
 import UserForm from "@components/organisms/register/user-form";
 import { RegisterData } from "@entities/auth/models/auth.types";
 import Cookies from "js-cookie";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useState } from "react";
+import { toast } from "sonner";
 
 interface ContextProps {
   temporaryData: RegisterData;
@@ -37,6 +39,7 @@ function RegisterProgress({
   const [currentStep, setCurrentStep] = useState(step);
   const [temporaryData, setTemporaryData] = useState(temporaryRegisterData);
   const router = useRouter();
+  const t = useTranslations("register");
 
   const saveTemporaryData = useCallback((data: RegisterData) => {
     const previousData: RegisterData = JSON.parse(
@@ -72,6 +75,7 @@ function RegisterProgress({
       Cookies.remove("x-register-data");
       Cookies.remove("x-register-step");
       Cookies.set("is-auth", "true", { expires: 365 });
+      toast.success(t("register-finished"));
       router.push("/profile");
     },
     [temporaryData]

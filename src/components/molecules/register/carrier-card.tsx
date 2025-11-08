@@ -1,6 +1,7 @@
 import { Headline } from "@components/atoms/headline";
 import Truck2 from "@components/atoms/icons/truck-2";
 import { cn } from "@shared/lib/utils";
+import { useTranslations } from "next-intl";
 import { MouseEventHandler } from "react";
 
 interface CardProps {
@@ -45,6 +46,8 @@ function ListLayout({ last }: { last?: boolean }) {
 }
 
 function CarrierCard({ className, onClick }: CardProps) {
+  const t = useTranslations("register.roles.carrier");
+
   return (
     <div
       onClick={onClick}
@@ -61,11 +64,9 @@ function CarrierCard({ className, onClick }: CardProps) {
           size={"sm"}
           as="h3"
         >
-          как перевозчик
+          {t("title")}
         </Headline>
-        <p className="text-sm text-charcoal-400">
-          Получайте актуальную информацию о своих перевозках{" "}
-        </p>
+        <p className="text-sm text-charcoal-400">{t("description")} </p>
       </div>
 
       <div className="relative w-28 flex flex-col">

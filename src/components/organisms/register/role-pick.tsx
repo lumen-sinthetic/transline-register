@@ -6,16 +6,18 @@ import RegisterText from "@components/molecules/register/register-text";
 import { useRegisterContext } from "@components/templates/register-progress";
 import { UserRole } from "@entities/auth/models/auth.types";
 import { cn } from "@shared/lib/utils";
+import { useTranslations } from "next-intl";
 import { useCallback, useState } from "react";
 import { toast } from "sonner";
 
 function RolePick({ className }: { className?: string }) {
   const { goForward } = useRegisterContext();
   const [role, setRole] = useState<UserRole>();
+  const t = useTranslations();
 
   const submitHandler = useCallback(() => {
     if (!role) {
-      toast.error("Роль не выбрана");
+      toast.error(t("register.roles.not-chosen"));
       return;
     }
     goForward({ role });
@@ -25,8 +27,8 @@ function RolePick({ className }: { className?: string }) {
     <div className={cn("register-phone pb-24 lg:pb-0", className)}>
       <Container className="space-y-8">
         <RegisterText
-          title="Регистрация"
-          description="Выберите, как вы хотите использовать приложение"
+          title={t("register.register")}
+          description={t("register.roles.description")}
         />
 
         <div className="flex flex-wrap gap-4">
@@ -50,7 +52,7 @@ function RolePick({ className }: { className?: string }) {
           size={"lg"}
           onClick={submitHandler}
         >
-          Продолжить
+          {t("common.forms.continue")}
         </Button>
       </Container>
     </div>

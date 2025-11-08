@@ -2,68 +2,72 @@ import { zPhoneNumber } from "@shared/lib/phone/z-phone";
 import { useMemo } from "react";
 import { UserRole } from "./auth.types";
 import z from "zod";
+import { useTranslations } from "next-intl";
 
 export function usePhoneSchema() {
+  const t = useTranslations("common.validation");
+
   const schema = useMemo(
     () =>
       z.object({
         phone_number: zPhoneNumber({
-          requiredMessage: "Номер телефона обязателен",
-          invalidMessage: "Некорректный номер телефона",
+          requiredMessage: t("phone_number.required"),
+          invalidMessage: t("phone_number.invalid"),
         }),
       }),
-    []
+    [t]
   );
 
   return schema;
 }
 
 export function useOtpSchema() {
+  const t = useTranslations("common.validation");
+
   const schema = useMemo(
     () =>
       z.object({
-        otp: z
-          .string({ message: "Некорректный код" })
-          .length(6, "Необходимая длина - 6 символов"),
+        otp: z.string({ message: t("otp.invalid") }).length(6, t("otp.length")),
       }),
-    []
+    [t]
   );
 
   return schema;
 }
 
 export function useUserSchema(role?: UserRole) {
+  const t = useTranslations("common.validation");
+
   const schema = useMemo(() => {
     const base = z.object({
       first_name: z
-        .string({ error: "Имя обязательно" })
-        .nonempty("Имя обязательно"),
+        .string({ error: t("first_name.required") })
+        .nonempty(t("first_name.required")),
       last_name: z
-        .string({ error: "Фамилия обязательна" })
-        .nonempty("Фамилия обязательна"),
-      patronymic: z.string({ error: "Неверное отчество" }).optional(),
-      email: z.email({ error: "Неверный Email" }).nonempty("Email обязателен"),
+        .string({ error: t("last_name.required") })
+        .nonempty(t("last_name.required")),
+      patronymic: z.string({ error: t("patronymic.invalid") }).optional(),
+      email: z
+        .email({ error: t("email.invalid") })
+        .nonempty(t("email.required")),
       password: z
-        .string({ error: "Пароль обязателен" })
-        .min(8, "Пароль должен содеражть минимум 8 символов")
-        .regex(
-          /^(?=.*\p{L})(?=.*\p{N})[\p{L}\p{N}]+$/u,
-          "Пароль должен содержать цифры и буквы латиницы"
-        ),
+        .string({ error: t("password.required") })
+        .min(8, t("password.min"))
+        .regex(/^(?=.*\p{L})(?=.*\p{N})[\p{L}\p{N}]+$/u, t("password.regex")),
       iin: z
-        .string({ error: "ИИН обязателен" })
-        .length(12, "ИИН должен содержать 12 символов")
+        .string({ error: t("iin.required") })
+        .length(12, t("iin.length"))
         .optional(),
       bin: z
-        .string({ error: "БИН обязателен" })
-        .length(12, "БИН должен содержать 12 символов")
+        .string({ error: t("bin.required") })
+        .length(12, t("bin.length"))
         .optional(),
     });
 
     if (role === "customer") return base.required({ bin: true });
 
     return base.required({ iin: true });
-  }, [role]);
+  }, [role, t]);
 
   return schema;
 }

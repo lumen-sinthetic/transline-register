@@ -1,0 +1,33 @@
+{
+  "register": {
+    "register": "Registration",
+    "welcome": "Welcome to the business personal account!",
+    "phone-step": "To log in to your personal account, enter your phone number, an SMS with a verification code will be sent to it",
+
+    "acceptance": {
+      "part-1": "I agree with",
+      "part-2": "privacy policy"
+    },
+
+    "roles": {
+      "description": "Choose how you want to use the application",
+      "not-chosen": "Role not selected",
+      "customer": {
+        "title": "as a customer",
+        "description": "Monitor request execution in real time"
+      },
+      "carrier": {
+        "title": "as a carrier",
+        "description": "Get up-to-date information about your shipments"
+      }
+    },
+
+    "otp": {
+      "title": "Enter the code from SMS",
+      "description(phone)": "Code sent to number {phone}",
+      "re-sent": "Code sent again"
+    },
+
+    "register-finished": "Registration completed successfully"
+  }
+}

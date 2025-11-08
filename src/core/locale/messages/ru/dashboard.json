@@ -1,0 +1,35 @@
+{
+  "dashboard": {
+    "menu": {
+      "sections": {
+        "applications": {
+          "title": "заявки",
+          "items": {
+            "active": "Активные",
+            "archived": "Архивные"
+          }
+        },
+        "counterparties": {
+          "title": "контрагенты",
+          "items": {
+            "customers": "Заказчики",
+            "carriers": "Перевозчики"
+          }
+        },
+        "fleet": {
+          "title": "автопарк",
+          "items": {
+            "vehicles": "Транспорт"
+          }
+        },
+        "management": {
+          "title": "управление",
+          "items": {
+            "directories": "Справочники",
+            "managers": "Менеджеры"
+          }
+        }
+      }
+    }
+  }
+}

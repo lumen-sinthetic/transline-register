@@ -13,6 +13,7 @@ import { interMask } from "@shared/lib/phone/tools";
 import { promiseGenerator } from "@shared/lib/promise-generator";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
@@ -20,6 +21,7 @@ import z from "zod";
 function OtpCheck() {
   const { temporaryData, goForward } = useRegisterContext();
   const schema = useOtpSchema();
+  const t = useTranslations("register.otp");
 
   const {
     control,
@@ -39,9 +41,11 @@ function OtpCheck() {
     <div className="otp-check">
       <Container>
         <RegisterText
-          title="Введите код из SMS"
+          title={t("title")}
           //TODO: add here mask with brackets
-          description={`Код отправлен на номер ${interMask(temporaryData.phone_number || "")}`}
+          description={t("description(phone)", {
+            phone: interMask(temporaryData.phone_number || ""),
+          })}
         />
 
         <form
@@ -91,7 +95,7 @@ function OtpCheck() {
 
           <OtpTimer
             sendFn={() => {
-              toast.info("Код отправлен повторно");
+              toast.info(t("re-sent"));
             }}
           />
         </form>

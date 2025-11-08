@@ -10,11 +10,14 @@ import { promiseGenerator } from "@shared/lib/promise-generator";
 import { useLocalStorage } from "@shared/lib/storage/local-storage";
 import { cn } from "@shared/lib/utils";
 import { ChevronRight, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 
 function UserEditMenu() {
   const schema = useUserEditSchema();
+  const t = useTranslations("common.forms");
   const { logout, activeUserMenu } = useDashboardContext();
   const storage = useLocalStorage();
   const animationRef = useSlideInAnimation<HTMLFormElement>(
@@ -36,6 +39,7 @@ function UserEditMenu() {
   const onSubmit = handleSubmit(async data => {
     const res = await promiseGenerator(data);
     storage.setItem("user", JSON.stringify(res));
+    toast.success(t("saved"));
   });
 
   return (
@@ -52,7 +56,7 @@ function UserEditMenu() {
           type="submit"
           className="relative"
         >
-          <span className={cn({ invisible: isSubmitting })}>сохранить</span>
+          <span className={cn({ invisible: isSubmitting })}>{t("save")}</span>
           {isSubmitting && <Loader2 className="animate-spin absolute" />}
         </Button>
 
@@ -69,32 +73,32 @@ function UserEditMenu() {
 
       <div className="pb-10">
         <UserField
-          label="Фамилия"
+          label={t("labels.last_name")}
           control={control}
           name="last_name"
         />
 
         <UserField
-          label="Имя"
+          label={t("labels.first_name")}
           control={control}
           name="first_name"
         />
 
         <UserField
-          label="Отчество"
+          label={t("labels.patronymic")}
           control={control}
           name="patronymic"
         />
 
         <UserField
-          label="Номер телефона"
+          label={t("labels.phone_number")}
           name="phone_number"
           control={control}
           type="tel"
         />
 
         <UserField
-          label="Email"
+          label={t("labels.email")}
           control={control}
           name="email"
           type="email"

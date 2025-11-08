@@ -29,7 +29,7 @@ function LangSwitcher({
           className={cn(
             "text-lg uppercase size-9",
             textClassName,
-            { "font-semibold text-primary": currentLocale === locale },
+            { "font-medium text-primary": currentLocale === locale },
             currentLocale === locale && activeTextClassName
           )}
           onClick={() => router.push(pathname, { locale, scroll: false })}

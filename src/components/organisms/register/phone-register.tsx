@@ -12,6 +12,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { promiseGenerator } from "@shared/lib/promise-generator";
 import { cn } from "@shared/lib/utils";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -21,6 +22,8 @@ function PhoneRegister({ classname }: { classname?: string }) {
   const [isAccepted, setIsAccepted] = useState(false);
   const { goForward, temporaryData } = useRegisterContext();
   const schema = usePhoneSchema();
+
+  const t = useTranslations();
 
   const {
     control,
@@ -45,8 +48,8 @@ function PhoneRegister({ classname }: { classname?: string }) {
     <div className={cn("register-phone", classname)}>
       <Container>
         <RegisterText
-          title="Регистрация"
-          description="Для входа в личный кабинет введите свой номер телефона, на него будет отправлено SMS с проверочным кодом"
+          title={t("register.register")}
+          description={t("register.phone-step")}
         />
 
         <form
@@ -64,12 +67,12 @@ function PhoneRegister({ classname }: { classname?: string }) {
               onCheckedChange={v => setIsAccepted(Boolean(v))}
             />
             <span className="font-light">
-              Согласен с{" "}
+              {t("register.acceptance.part-1")}{" "}
               <Link
                 className="underline"
                 href={"#"}
               >
-                политикой конфиденциальности
+                {t("register.acceptance.part-2")}
               </Link>
             </span>
           </label>
@@ -80,7 +83,9 @@ function PhoneRegister({ classname }: { classname?: string }) {
             type="submit"
             disabled={isSubmitting || !isAccepted || !isValid}
           >
-            <span className={cn({ invisible: isSubmitting })}>Войти</span>
+            <span className={cn({ invisible: isSubmitting })}>
+              {t("common.forms.log-in")}
+            </span>
             {isSubmitting && <Loader2 className="animate-spin absolute" />}
           </Button>
         </form>

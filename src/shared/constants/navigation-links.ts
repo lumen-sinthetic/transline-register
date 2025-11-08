@@ -10,6 +10,7 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface SidebarItem {
   label: string;
@@ -23,63 +24,63 @@ interface SidebarSection {
   items: SidebarItem[];
 }
 
-// TODO: Add custom icons and translations
-
 export function useNaigationLinks() {
+  const t = useTranslations("dashboard.menu.sections");
+
   const dashboardLinks: SidebarSection[] = useMemo(
     () => [
       {
-        title: "заявки",
+        title: t("applications.title"),
         items: [
           {
-            label: "Активные",
+            label: t("applications.items.active"),
             icon: ClipboardList,
             isActive: true,
           },
           {
-            label: "Архивные",
+            label: t("applications.items.archived"),
             icon: Archive,
           },
         ],
       },
       {
-        title: "контрагенты",
+        title: t("counterparties.title"),
         items: [
           {
-            label: "Заказчики",
+            label: t("counterparties.items.customers"),
             icon: UserCircle,
           },
           {
-            label: "Перевозчики",
+            label: t("counterparties.items.carriers"),
             icon: Users,
           },
         ],
       },
       {
-        title: "автопарк",
+        title: t("fleet.title"),
         items: [
           {
-            label: "Транспорт",
+            label: t("fleet.items.vehicles"),
             icon: Truck,
           },
         ],
       },
       {
-        title: "управление",
+        title: t("management.title"),
         items: [
           {
-            label: "Справочники",
+            label: t("management.items.directories"),
             icon: BookOpen,
             hasCaret: true,
           },
           {
-            label: "Менеджеры",
+            label: t("management.items.managers"),
             icon: UserCog,
           },
         ],
       },
     ],
-    []
+    [t]
   );
 
   return { dashboardLinks };

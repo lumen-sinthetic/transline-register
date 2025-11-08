@@ -1,0 +1,35 @@
+{
+  "dashboard": {
+    "menu": {
+      "sections": {
+        "applications": {
+          "title": "applications",
+          "items": {
+            "active": "Active",
+            "archived": "Archived"
+          }
+        },
+        "counterparties": {
+          "title": "counterparties",
+          "items": {
+            "customers": "Customers",
+            "carriers": "Carriers"
+          }
+        },
+        "fleet": {
+          "title": "fleet",
+          "items": {
+            "vehicles": "Vehicles"
+          }
+        },
+        "management": {
+          "title": "management",
+          "items": {
+            "directories": "Directories",
+            "managers": "Managers"
+          }
+        }
+      }
+    }
+  }
+}

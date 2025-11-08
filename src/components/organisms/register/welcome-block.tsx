@@ -1,9 +1,14 @@
+"use client";
+
 import { Container } from "@components/atoms/container";
 import { Headline } from "@components/atoms/headline";
 import Logo from "@components/atoms/icons/logo";
 import { cn } from "@shared/lib/utils";
+import { useTranslations } from "next-intl";
 
 function WelcomeBlock({ className }: { className?: string }) {
+  const t = useTranslations("register");
+
   return (
     <div
       className={cn(
@@ -19,7 +24,7 @@ function WelcomeBlock({ className }: { className?: string }) {
           as="h1"
           size={"lg"}
         >
-          Добро пожаловать в личный кабинет для бизнеса!
+          {t("welcome")}
         </Headline>
       </Container>
     </div>

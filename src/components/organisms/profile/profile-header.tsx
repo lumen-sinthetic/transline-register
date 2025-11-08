@@ -2,6 +2,7 @@
 
 import { Headline } from "@components/atoms/headline";
 import Menu from "@components/atoms/icons/menu";
+import LangSwitcher from "@components/molecules/lang-switcher";
 import { useDashboardContext } from "@shared/context/dashboard.context";
 import { cn } from "@shared/lib/utils";
 import { ChevronDown } from "lucide-react";
@@ -29,25 +30,28 @@ function ProfileHeader() {
         </Headline>
       </div>
 
-      <button
-        type="button"
-        className="flex items-center gap-2"
-        onClick={() => setActiveUserMenu(prev => !prev)}
-      >
-        <Image
-          src={"/assets/img/placeholder.svg"}
-          alt="placeholder"
-          width={32}
-          height={32}
-          className="rounded-full"
-        />
+      <div className="flex gap-2">
+        <LangSwitcher className="gap-1" />
+        <button
+          type="button"
+          className="flex items-center gap-2"
+          onClick={() => setActiveUserMenu(prev => !prev)}
+        >
+          <Image
+            src={"/assets/img/placeholder.svg"}
+            alt="placeholder"
+            width={32}
+            height={32}
+            className="rounded-full"
+          />
 
-        <ChevronDown
-          className={cn("stroke-gray-500 w-4 transition-transform", {
-            "rotate-180": activeUserMenu,
-          })}
-        />
-      </button>
+          <ChevronDown
+            className={cn("stroke-gray-500 w-4 transition-transform", {
+              "rotate-180": activeUserMenu,
+            })}
+          />
+        </button>
+      </div>
     </header>
   );
 }

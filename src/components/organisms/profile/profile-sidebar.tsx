@@ -1,6 +1,6 @@
 "use client";
 
-import { useNaigationLinks } from "@shared/constants/naviagtion";
+import { useNaigationLinks } from "@shared/constants/navigation-links";
 import { useDashboardContext } from "@shared/context/dashboard.context";
 import { useSlideInAnimation } from "@shared/lib/animations/slide-in-animation";
 import { cn } from "@shared/lib/utils";

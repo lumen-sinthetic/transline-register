@@ -1,16 +1,12 @@
 "use client";
 
-import {
-  AbstractIntlMessages,
-  IntlErrorCode,
-  Locale,
-  NextIntlClientProvider,
-} from "next-intl";
+import { IntlMessages } from "@core/locale/messages";
+import { IntlErrorCode, Locale, NextIntlClientProvider } from "next-intl";
 import { ReactNode } from "react";
 
 interface IntlProviderProps {
   children: ReactNode;
-  messages: AbstractIntlMessages;
+  messages: IntlMessages;
   locale: Locale;
 }
 

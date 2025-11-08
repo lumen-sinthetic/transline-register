@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@components/atoms/button";
+import { useTranslations } from "next-intl";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 
 interface OtpTimerProps {
@@ -12,6 +13,7 @@ function OtpTimer({ seconds = 60, sendFn }: OtpTimerProps) {
   const [time, setTime] = useState(seconds);
   const [isExpierd, setIsExpierd] = useState(false);
   const interval = useRef<number>(0);
+  const t = useTranslations("common.forms");
 
   const initTimer = useCallback(() => {
     setIsExpierd(false);
@@ -47,10 +49,10 @@ function OtpTimer({ seconds = 60, sendFn }: OtpTimerProps) {
       onClick={() => reset(interval.current)}
     >
       <span>
-        Отправить повторно{" "}
+        {t("send-again")}{" "}
         {!isExpierd && (
           <span>
-            через{" "}
+            {t("after")}{" "}
             <span className="verify-minutes">
               {Math.floor(time / 60)
                 .toString()

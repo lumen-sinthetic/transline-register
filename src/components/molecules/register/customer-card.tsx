@@ -4,6 +4,7 @@ import Luggage from "@components/atoms/icons/luggage";
 import Truck from "@components/atoms/icons/truck";
 import CurvedLine from "@components/atoms/svg/curved-line";
 import { cn } from "@shared/lib/utils";
+import { useTranslations } from "next-intl";
 import { MouseEventHandler } from "react";
 
 interface CardProps {
@@ -12,6 +13,8 @@ interface CardProps {
 }
 
 function CustomerCard({ className, onClick }: CardProps) {
+  const t = useTranslations("register.roles.customer");
+
   return (
     <div
       onClick={onClick}
@@ -28,11 +31,9 @@ function CustomerCard({ className, onClick }: CardProps) {
           size={"sm"}
           as="h3"
         >
-          как заказчик
+          {t("title")}
         </Headline>
-        <p className="text-sm text-charcoal-400">
-          Контролируйте выполнение заявок в реальном времени
-        </p>
+        <p className="text-sm text-charcoal-400">{t("description")}</p>
       </div>
 
       <div className="relative w-28">

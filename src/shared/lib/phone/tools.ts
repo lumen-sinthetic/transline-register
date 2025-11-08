@@ -7,6 +7,8 @@ export function unmask(numbers: string) {
   return numbers.replaceAll(/[()\-\s]/g, "");
 }
 
+// const mask = (phone:string)=> mask
+
 export function interMask(phone: string): string {
   try {
     const number = parsePhoneNumberWithError(phone);

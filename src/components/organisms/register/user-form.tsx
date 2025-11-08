@@ -9,12 +9,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { promiseGenerator } from "@shared/lib/promise-generator";
 import { cn } from "@shared/lib/utils";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
 function UserForm() {
   const { temporaryData, finish } = useRegisterContext();
   const schema = useUserSchema(temporaryData.role);
+
+  const t = useTranslations("common.forms");
 
   const {
     register,
@@ -36,7 +39,7 @@ function UserForm() {
   useSaveOnUnload(watch());
 
   return (
-    <div className="yser-form pb-24 lg:pb-0">
+    <div className="user-form pb-24 lg:pb-0">
       <Container>
         <form
           onSubmit={onSubmit}
@@ -45,12 +48,12 @@ function UserForm() {
           <Input
             {...register("last_name")}
             error={errors.last_name?.message}
-            placeholder="Фамилия*"
+            placeholder={`${t("labels.first_name")}*`}
           />
           <Input
             {...register("first_name")}
             error={errors.first_name?.message}
-            placeholder="Имя*"
+            placeholder={`${t("labels.last_name")}*`}
           />
           <Input
             {...register("patronymic")}
@@ -60,12 +63,12 @@ function UserForm() {
           <Input
             {...register("email")}
             error={errors.email?.message}
-            placeholder="Email*"
+            placeholder={`${t("labels.email")}*`}
           />
           <PasswordInput
             {...register("password")}
             error={errors.password?.message}
-            placeholder="Пароль*"
+            placeholder={`${t("labels.password")}*`}
             autoComplete="current-password"
           />
 
@@ -73,13 +76,13 @@ function UserForm() {
             <Input
               {...register("bin")}
               error={errors.bin?.message}
-              placeholder="БИН*"
+              placeholder={`${t("labels.bin")}*`}
             />
           ) : (
             <Input
               {...register("iin")}
               error={errors.iin?.message}
-              placeholder="ИИН*"
+              placeholder={`${t("labels.iin")}*`}
             />
           )}
 
@@ -89,7 +92,9 @@ function UserForm() {
             type="submit"
             disabled={isSubmitting}
           >
-            <span className={cn({ invisible: isSubmitting })}>Войти</span>
+            <span className={cn({ invisible: isSubmitting })}>
+              {t("log-in")}
+            </span>
             {isSubmitting && <Loader2 className="animate-spin absolute" />}
           </Button>
         </form>

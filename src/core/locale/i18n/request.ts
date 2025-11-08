@@ -17,10 +17,15 @@ export default getRequestConfig(async ({ requestLocale }) => {
     ? requested
     : routing.defaultLocale;
 
-  const [base] = await getIntlMessages(locale, "base");
+  const [base, register, dashboard] = await getIntlMessages(
+    locale,
+    "base",
+    "register",
+    "dashboard"
+  );
 
   return {
     locale,
-    messages: { ...base },
+    messages: { ...base, ...register, ...dashboard },
   };
 });
