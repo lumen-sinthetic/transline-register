@@ -2,19 +2,20 @@
 
 import { useNaigationLinks } from "@shared/constants/naviagtion";
 import { useDashboardContext } from "@shared/context/dashboard.context";
+import { useSlideInAnimation } from "@shared/lib/animations/slide-in-animation";
 import { cn } from "@shared/lib/utils";
 import { ChevronUp } from "lucide-react";
 
 function ProfileSidebar() {
   const { dashboardLinks } = useNaigationLinks();
-
   const { activeMenu } = useDashboardContext();
+  const animRef = useSlideInAnimation(activeMenu, "left");
 
   return (
     <aside
+      ref={animRef}
       className={cn(
-        "bg-mostly-white border-r w-64 fixed left-0 top-14 bottom-0 pb-10",
-        { hidden: !activeMenu }
+        "bg-mostly-white border-r w-full xs:w-64 fixed left-0 top-14 bottom-0 pb-10"
       )}
     >
       <nav className="flex flex-col gap-4 h-full">

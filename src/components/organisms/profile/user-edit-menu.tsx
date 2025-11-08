@@ -5,6 +5,7 @@ import UserField from "@components/molecules/profile/user-field";
 import { useUserEditSchema } from "@entities/user/models/user-schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useDashboardContext } from "@shared/context/dashboard.context";
+import { useSlideInAnimation } from "@shared/lib/animations/slide-in-animation";
 import { promiseGenerator } from "@shared/lib/promise-generator";
 import { useLocalStorage } from "@shared/lib/storage/local-storage";
 import { cn } from "@shared/lib/utils";
@@ -14,8 +15,12 @@ import z from "zod";
 
 function UserEditMenu() {
   const schema = useUserEditSchema();
-  const { activeUserMenu, logout } = useDashboardContext();
+  const { logout, activeUserMenu } = useDashboardContext();
   const storage = useLocalStorage();
+  const animationRef = useSlideInAnimation<HTMLFormElement>(
+    activeUserMenu,
+    "right"
+  );
 
   const {
     control,
@@ -36,9 +41,10 @@ function UserEditMenu() {
   return (
     <form
       onSubmit={onSubmit}
-      className={cn("fixed top-14 bottom-0 right-0 w-[520px] border-l", {
-        hidden: !activeUserMenu,
-      })}
+      ref={animationRef}
+      className={cn(
+        "fixed top-14 bottom-0 right-0 w-full sm:w-[520px] border-l bg-white"
+      )}
     >
       <div className="flex items-center justify-between px-6 py-4">
         <Button

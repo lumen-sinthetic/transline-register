@@ -48,7 +48,7 @@ function RegisterProgress({
     Cookies.set(
       "x-register-data",
       JSON.stringify({ ...previousData, ...data }),
-      { expires: 60 * 60 * 24 }
+      { expires: 1 }
     );
   }, []);
 
@@ -58,9 +58,7 @@ function RegisterProgress({
 
       setCurrentStep(prev => {
         const res = prev + 1;
-        Cookies.set("x-register-step", res.toString(), {
-          expires: 60 * 60 * 24, // 1 day
-        });
+        Cookies.set("x-register-step", res.toString(), { expires: 1 });
         return res;
       });
     },
@@ -73,6 +71,7 @@ function RegisterProgress({
       localStorage.setItem("user", JSON.stringify(finalData));
       Cookies.remove("x-register-data");
       Cookies.remove("x-register-step");
+      Cookies.set("is-auth", "true", { expires: 365 });
       router.push("/profile");
     },
     [temporaryData]

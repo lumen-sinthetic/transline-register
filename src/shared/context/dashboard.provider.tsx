@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { DashboardContext } from "./dashboard.context";
 import { PropsWithChildren, useCallback, useState } from "react";
+import Cookies from "js-cookie";
 
 function DashboardProvider({ children }: PropsWithChildren) {
   const router = useRouter();
@@ -12,6 +13,7 @@ function DashboardProvider({ children }: PropsWithChildren) {
 
   const logout = useCallback(() => {
     localStorage.removeItem("user");
+    Cookies.remove("is-auth");
     router.push("/");
   }, []);
 
