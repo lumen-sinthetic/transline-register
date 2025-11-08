@@ -1,20 +1,14 @@
-import { useMemo } from "react";
+import { ComponentProps, FC, useMemo } from "react";
 
-import {
-  Archive,
-  BookOpen,
-  ClipboardList,
-  Truck,
-  UserCircle,
-  UserCog,
-  Users,
-  type LucideIcon,
-} from "lucide-react";
+import OpenFolder from "@components/atoms/icons/dashboard/open-folder";
+import PaperCheck from "@components/atoms/icons/dashboard/paper-check";
+import Users from "@components/atoms/icons/dashboard/users";
+import { BookOpen, SquareUser, Truck, UserLock } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 interface SidebarItem {
   label: string;
-  icon: LucideIcon;
+  icon: FC<ComponentProps<"svg">>;
   isActive?: boolean;
   hasCaret?: boolean;
 }
@@ -34,12 +28,12 @@ export function useNaigationLinks() {
         items: [
           {
             label: t("applications.items.active"),
-            icon: ClipboardList,
+            icon: PaperCheck,
             isActive: true,
           },
           {
             label: t("applications.items.archived"),
-            icon: Archive,
+            icon: OpenFolder,
           },
         ],
       },
@@ -48,11 +42,11 @@ export function useNaigationLinks() {
         items: [
           {
             label: t("counterparties.items.customers"),
-            icon: UserCircle,
+            icon: Users,
           },
           {
             label: t("counterparties.items.carriers"),
-            icon: Users,
+            icon: UserLock,
           },
         ],
       },
@@ -75,7 +69,7 @@ export function useNaigationLinks() {
           },
           {
             label: t("management.items.managers"),
-            icon: UserCog,
+            icon: SquareUser,
           },
         ],
       },
