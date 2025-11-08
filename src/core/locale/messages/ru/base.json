@@ -54,5 +54,9 @@
         "length": "БИН должен содержать 12 символов"
       }
     }
+  },
+  "meta": {
+    "register": "Регистрация - Transline international",
+    "profile": "Профиль - Transline international"
   }
 }

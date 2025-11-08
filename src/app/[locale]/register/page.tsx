@@ -5,7 +5,14 @@ import WelcomeBlock from "@components/organisms/register/welcome-block";
 import RegisterProgress from "@components/templates/register-progress";
 import { getCountries } from "@entities/countries/api/countries.actions";
 import CountriesProvider from "@entities/countries/context/countries.context";
+import { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("meta");
+  return { title: t("register") };
+}
 
 async function Register() {
   const countries = await getCountries();
