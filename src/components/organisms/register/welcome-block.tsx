@@ -8,11 +8,11 @@ function WelcomeBlock({ className }: { className?: string }) {
     <div
       className={cn(
         "welcome",
-        "relative w-1/2 h-full bg-primary text-white",
+        "relative h-full bg-primary text-white",
         className
       )}
     >
-      <Container className="py-24 space-y-5">
+      <Container className="space-y-5">
         <Logo />
 
         <Headline

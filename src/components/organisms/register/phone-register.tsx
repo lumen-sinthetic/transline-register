@@ -43,7 +43,7 @@ function PhoneRegister({ classname }: { classname?: string }) {
 
   return (
     <div className={cn("register-phone", classname)}>
-      <Container className="py-24">
+      <Container>
         <RegisterText
           title="Регистрация"
           description="Для входа в личный кабинет введите свой номер телефона, на него будет отправлено SMS с проверочным кодом"

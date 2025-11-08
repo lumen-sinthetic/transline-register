@@ -9,7 +9,7 @@ function ProfileLayout({ children }: PropsWithChildren) {
     <DashboardProvider>
       <ProfileHeader />
       <ProfileSidebar />
-      {children}
+      <main className="pt-14">{children}</main>
       <UserEditMenu />
     </DashboardProvider>
   );

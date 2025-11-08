@@ -22,14 +22,14 @@ function RolePick({ className }: { className?: string }) {
   }, [role]);
 
   return (
-    <div className={cn("register-phone", className)}>
-      <Container className="py-24 space-y-8">
+    <div className={cn("register-phone pb-24 lg:pb-0", className)}>
+      <Container className="space-y-8">
         <RegisterText
           title="Регистрация"
           description="Выберите, как вы хотите использовать приложение"
         />
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-wrap gap-4">
           <CustomerCard
             onClick={() => setRole("customer")}
             className={cn("outline-primary", {

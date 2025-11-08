@@ -1,5 +1,5 @@
 function ProfilePage() {
-  return <div className="">123</div>;
+  return <div className="">Welcome to profile page</div>;
 }
 
 export default ProfilePage;

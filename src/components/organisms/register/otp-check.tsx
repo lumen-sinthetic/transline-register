@@ -37,7 +37,7 @@ function OtpCheck() {
 
   return (
     <div className="otp-check">
-      <Container className="py-24">
+      <Container>
         <RegisterText
           title="Введите код из SMS"
           //TODO: add here mask with brackets

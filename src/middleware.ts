@@ -4,6 +4,8 @@ import { NextMiddleware } from "next/server";
 
 const intlMiddlewareHandler = createMiddleware(routing);
 
+// TODO: Add dashboard and register logic
+
 const middleware: NextMiddleware = req => {
   const res = intlMiddlewareHandler(req);
 

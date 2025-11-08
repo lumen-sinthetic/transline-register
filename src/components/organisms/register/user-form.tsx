@@ -36,8 +36,8 @@ function UserForm() {
   useSaveOnUnload(watch());
 
   return (
-    <div className="otp-check">
-      <Container className="py-24">
+    <div className="yser-form pb-24 lg:pb-0">
+      <Container>
         <form
           onSubmit={onSubmit}
           className="space-y-4"

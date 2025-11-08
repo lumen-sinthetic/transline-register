@@ -67,7 +67,7 @@ async function RootLayout({ children, params }: Readonly<RootLayoutProps>) {
         >
           <PageProgress />
           <Toaster richColors />
-          <main className="min-h-screen">{children}</main>
+          {children}
         </IntlProvider>
       </body>
     </html>
