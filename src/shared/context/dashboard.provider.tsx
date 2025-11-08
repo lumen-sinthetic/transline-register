@@ -14,7 +14,7 @@ function DashboardProvider({ children }: PropsWithChildren) {
   const logout = useCallback(() => {
     localStorage.removeItem("user");
     Cookies.remove("is-auth");
-    router.push("/");
+    router.push("/register");
   }, []);
 
   return (

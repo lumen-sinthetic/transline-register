@@ -8,7 +8,7 @@ interface OtpTimerProps {
   sendFn?: () => Promise<void> | void;
 }
 
-function OtpTimer({ seconds = 20, sendFn }: OtpTimerProps) {
+function OtpTimer({ seconds = 60, sendFn }: OtpTimerProps) {
   const [time, setTime] = useState(seconds);
   const [isExpierd, setIsExpierd] = useState(false);
   const interval = useRef<number>(0);

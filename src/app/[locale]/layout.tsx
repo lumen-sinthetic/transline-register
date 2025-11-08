@@ -59,7 +59,11 @@ async function RootLayout({ children, params }: Readonly<RootLayoutProps>) {
     <html lang={locale}>
       <body
         suppressHydrationWarning
-        className={cn(geologica.className, geologica.variable, "antialiased")}
+        className={cn(
+          geologica.className,
+          geologica.variable,
+          "text-charcoal antialiased"
+        )}
       >
         <IntlProvider
           locale={locale}

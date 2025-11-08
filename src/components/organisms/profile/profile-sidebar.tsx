@@ -26,7 +26,7 @@ function ProfileSidebar() {
           >
             <div
               className={cn(
-                "px-6 text-[11px] font-semibold pb-2 pt-3 uppercase tracking-[0.12em] text-black",
+                "px-6 text-[11px] font-semibold pb-2 pt-3 uppercase tracking-[0.12em] text-charcoal",
                 "border-b border-dashed"
               )}
             >
@@ -43,8 +43,8 @@ function ProfileSidebar() {
                       type="button"
                       className={cn(
                         "flex w-full items-center gap-3 px-6 py-2 text-left text-sm transition-colors text-charcoal-400",
-                        "hover:text-black",
-                        { "text-black": item.isActive }
+                        "hover:text-charcoal",
+                        { "text-charcoal": item.isActive }
                       )}
                     >
                       <Icon className="h-4 w-4" />

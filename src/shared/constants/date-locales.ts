@@ -1,11 +1,11 @@
 import { type Locale as IntlLocale } from "next-intl";
-import { ru, kk, enUS, Locale } from "date-fns/locale";
+import { ru, enUS, Locale } from "date-fns/locale";
 import { routing } from "@core/locale/i18n/routing";
 
 const dateLocales: Record<IntlLocale, Locale> = {
   ru,
   en: enUS,
-  kz: kk,
+  // kz: kk,
 };
 
 export const getDateLocale = (locale: IntlLocale) => {
